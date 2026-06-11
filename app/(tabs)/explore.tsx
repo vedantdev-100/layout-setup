@@ -9,14 +9,12 @@ import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Fonts } from '@/constants/theme';
 import ScreenWrapper from '@/components/ScreenWrapper';
-// import { View } from 'react-native-reanimated/lib/typescript/Animated';
 
 export default function TabTwoScreen() {
   return (
     <ScreenWrapper
       title="Explore"
-      left={<Text style={{ color: "#fff" }}>Back</Text>}
-      right={<Text style={{ color: "#fff" }}>Edit</Text>}
+      showBack
     >
       <ParallaxScrollView
         headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}

@@ -1,56 +1,82 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable, Platform } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Pressable,
+    Platform,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 type Props = {
-    title: string;
+    title?: string;
     children: React.ReactNode;
     right?: React.ReactNode;
     showBack?: boolean;
+    showHeader?: boolean;
 };
 
 export default function ScreenWrapper({
-    title,
+    title = "",
     children,
     right,
     showBack = false,
+    showHeader = true,
 }: Props) {
     const insets = useSafeAreaInsets();
     const router = useRouter();
 
     return (
         <View style={styles.container}>
-            {/* Header */}
+            {showHeader && (
+                <View
+                    style={[
+                        styles.header,
+                        {
+                            paddingTop:
+                                Platform.OS === "ios"
+                                    ? insets.top
+                                    : insets.top + 8,
+                        },
+                    ]}
+                >
+                    <View style={styles.side}>
+                        {showBack && (
+                            <Pressable
+                                onPress={() => router.back()}
+                                hitSlop={10}
+                            >
+                                <Ionicons
+                                    name="chevron-back"
+                                    size={26}
+                                    color="white"
+                                />
+                            </Pressable>
+                        )}
+                    </View>
+
+                    <Text numberOfLines={1} style={styles.title}>
+                        {title}
+                    </Text>
+
+                    <View style={[styles.side, styles.rightSide]}>
+                        {right}
+                    </View>
+                </View>
+            )}
+
             <View
                 style={[
-                    styles.header,
+                    styles.content,
                     {
-                        paddingTop: Platform.OS === "ios" ? insets.top : insets.top + 8,
+                        paddingBottom: insets.bottom + 56,
                     },
                 ]}
             >
-                {/* Left */}
-                <View style={styles.side}>
-                    {showBack ? (
-                        <Pressable onPress={() => router.back()} hitSlop={10}>
-                            <Ionicons name="chevron-back" size={26} color="white" />
-                        </Pressable>
-                    ) : null}
-                </View>
-
-                {/* Title */}
-                <Text numberOfLines={1} style={styles.title}>
-                    {title}
-                </Text>
-
-                {/* Right */}
-                <View style={styles.side}>{right}</View>
+                {children}
             </View>
-
-            {/* Content */}
-            <View style={styles.content}>{children}</View>
         </View>
     );
 }
@@ -79,8 +105,11 @@ const styles = StyleSheet.create({
 
     side: {
         width: 60,
-        alignItems: "flex-start",
         justifyContent: "center",
+    },
+
+    rightSide: {
+        alignItems: "flex-end",
     },
 
     content: {
