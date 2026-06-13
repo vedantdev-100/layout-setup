@@ -8,10 +8,10 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
 
   return (
-    // <ScreenWrapper
-    //   title="Home" 
-    //   showBack
-    // >
+    <ScreenWrapper
+      title="Home"
+      showBack
+    >
       <View style={styles.container} >
         <ScrollView
           contentContainerStyle={styles.content}
@@ -24,7 +24,7 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
       </View >
-    // </ScreenWrapper>
+    </ScreenWrapper>
   );
 }
 
