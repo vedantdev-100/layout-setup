@@ -43,7 +43,7 @@ export default function Settings() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ebebeb',
+        backgroundColor: '#121212', // was '#ebebeb'
         paddingTop: 24,
     },
     statusBarBlur: {
