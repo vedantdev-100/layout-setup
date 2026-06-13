@@ -32,12 +32,29 @@ function StatusOverlays() {
   );
 }
 
+
+const CustomDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: "#121212",
+  },
+};
+
+const CustomLightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#121212",
+  },
+};
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <SafeAreaProvider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={colorScheme === 'dark' ? CustomDarkTheme : CustomLightTheme}>
 
         <StatusBar
           style="light"
