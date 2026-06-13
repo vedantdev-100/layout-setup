@@ -116,7 +116,6 @@
 //         flex: 1,
 //     },
 // });
-
 import React from "react";
 import {
     View,
@@ -128,7 +127,6 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { BlurView } from "expo-blur";
 
 type Props = {
     title?: string;
@@ -151,18 +149,24 @@ export default function ScreenWrapper({
     return (
         <View style={styles.container}>
             {showHeader && (
-                <BlurView
-                    intensity={85}
-                    tint="dark"
+                <View
                     style={[
                         styles.header,
-                        { paddingTop: Platform.OS === "ios" ? insets.top : insets.top + 8 },
+                        {
+                            paddingTop: Platform.OS === "ios"
+                                ? insets.top
+                                : insets.top + 8,
+                        },
                     ]}
                 >
                     <View style={styles.side}>
                         {showBack && (
                             <Pressable onPress={() => router.back()} hitSlop={10}>
-                                <Ionicons name="chevron-back" size={26} color="white" />
+                                <Ionicons
+                                    name="chevron-back"
+                                    size={26}
+                                    color="white"
+                                />
                             </Pressable>
                         )}
                     </View>
@@ -174,7 +178,7 @@ export default function ScreenWrapper({
                     <View style={[styles.side, styles.rightSide]}>
                         {right}
                     </View>
-                </BlurView>
+                </View>
             )}
 
             <View style={[styles.content, { paddingBottom: insets.bottom + 56 }]}>
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: 16,
         paddingBottom: 12,
-        // No backgroundColor here — BlurView owns the background
+        backgroundColor: "#121212",
     },
 
     title: {
