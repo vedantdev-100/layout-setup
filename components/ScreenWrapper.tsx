@@ -181,7 +181,8 @@ export default function ScreenWrapper({
                 </View>
             )}
 
-            <View style={[styles.content, { paddingBottom: insets.bottom + 56 }]}>
+            {/* <View style={[styles.content, { paddingBottom: insets.bottom + 56 }]}> */}
+            <View style={styles.content}>
                 {children}
             </View>
         </View>

@@ -15,7 +15,6 @@ export const unstable_settings = {
 
 function StatusOverlays() {
   const insets = useSafeAreaInsets();
-
   return (
     <>
       {/* Top Blur only */}
@@ -24,10 +23,9 @@ function StatusOverlays() {
         tint="dark"
         style={[
           styles.blur,
-          { height: insets.top },
+          { height: insets.top }, 
         ]}
       />
-      {/* Bottom filler removed — NativeTabs handles its own safe area */}
     </>
   );
 }
