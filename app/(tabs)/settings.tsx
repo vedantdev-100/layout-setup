@@ -46,6 +46,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212', // was '#ebebeb'
         paddingTop: 24,
     },
+    header: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 16,
+        paddingBottom: 12,
+        backgroundColor: "#121212", // ← only here
+    },
     statusBarBlur: {
         position: 'absolute',
         top: 0,
