@@ -15,7 +15,7 @@ export default function Settings() {
             />
 
             {/* Only blur the status bar area */}
-            <BlurView
+            {/* <BlurView
                 intensity={80}
                 tint="dark"
                 style={[
@@ -24,7 +24,7 @@ export default function Settings() {
                         height: insets.top,
                     },
                 ]}
-            />
+            /> */}
 
             <ScrollView
                 contentContainerStyle={styles.content}
@@ -43,7 +43,8 @@ export default function Settings() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0f172a',
+        backgroundColor: '#ebebeb',
+        paddingTop: 24,
     },
     statusBarBlur: {
         position: 'absolute',
