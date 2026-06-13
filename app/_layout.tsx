@@ -18,7 +18,7 @@ function StatusOverlays() {
 
   return (
     <>
-      {/* Top Blur */}
+      {/* Top Blur only */}
       <BlurView
         intensity={85}
         tint="dark"
@@ -27,19 +27,7 @@ function StatusOverlays() {
           { height: insets.top },
         ]}
       />
-
-      {/* Bottom inset filler (FIXED) */}
-      <View
-        pointerEvents="none"
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: insets.bottom,
-          backgroundColor: "#121212",
-        }}
-      />
+      {/* Bottom filler removed — NativeTabs handles its own safe area */}
     </>
   );
 }
