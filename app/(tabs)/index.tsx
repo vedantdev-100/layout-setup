@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { BlurView } from 'expo-blur';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ScreenWrapper from '@/components/ScreenWrapper';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const bottomPadding = Platform.OS === 'ios'
+    ? insets.bottom + 49 + 16
+    : (Platform.OS === 'android' ? insets.bottom + 60 + 16 : 40);
 
   return (
     <ScreenWrapper
@@ -15,7 +18,7 @@ export default function HomeScreen() {
     >
       <View style={styles.container} >
         <ScrollView
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]}
           showsVerticalScrollIndicator={false}
         >
           {Array.from({ length: 30 }).map((_, index) => (

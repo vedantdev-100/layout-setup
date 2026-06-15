@@ -30,10 +30,8 @@ export default function ScreenWrapper({
     const insets = useSafeAreaInsets();
     const router = useRouter();
 
-    const paddingBottom = Platform.OS === 'ios' ? insets.bottom + 49 : 0;
-
     return (
-        <View style={[styles.container, { backgroundColor: screenBgColor, paddingBottom }]}>
+        <View style={[styles.container, { backgroundColor: screenBgColor }]}>
             {showHeader && (
                 <View
                     style={[
