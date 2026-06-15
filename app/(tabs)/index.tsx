@@ -5,7 +5,7 @@ export default function HomeScreen() {
   return (
     <ScreenWrapper
       title="Home"
-      showBack
+      // showBack
       screenBgColor="#0f172a"
       scrollable
       contentContainerStyle={styles.content}

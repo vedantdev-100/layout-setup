@@ -47,7 +47,7 @@ export default function ScreenWrapper({
                         styles.header,
                         {
                             paddingTop: Platform.OS === "ios"
-                                ? insets.top
+                                ? insets.top + 12
                                 : insets.top + 8,
                         },
                     ]}
