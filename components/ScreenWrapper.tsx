@@ -16,7 +16,7 @@ type Props = {
     right?: React.ReactNode;
     showBack?: boolean;
     showHeader?: boolean;
-    backgroundColor?: string;
+    screenBgColor?: string;
 };
 
 export default function ScreenWrapper({
@@ -25,17 +25,15 @@ export default function ScreenWrapper({
     right,
     showBack = false,
     showHeader = true,
-    backgroundColor = "#121212",
+    screenBgColor = "#121212",
 }: Props) {
     const insets = useSafeAreaInsets();
     const router = useRouter();
 
-    const isNativeTabs = Platform.OS === 'ios' || Platform.OS === 'android';
-    const tabHeight = Platform.OS === 'ios' ? 49 : 60;
-    const bottomPadding = isNativeTabs ? insets.bottom + tabHeight : 0;
+    const paddingBottom = Platform.OS === 'ios' ? insets.bottom + 49 : 0;
 
     return (
-        <View style={[styles.container, { backgroundColor }]}>
+        <View style={[styles.container, { backgroundColor: screenBgColor, paddingBottom }]}>
             {showHeader && (
                 <View
                     style={[
@@ -69,7 +67,7 @@ export default function ScreenWrapper({
                 </View>
             )}
 
-            <View style={[styles.content, { paddingBottom: bottomPadding }]}>
+            <View style={styles.content}>
                 {children}
             </View>
         </View>
