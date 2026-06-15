@@ -1,6 +1,5 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Collapsible } from '@/components/ui/collapsible';
 import { ExternalLink } from '@/components/external-link';
@@ -12,10 +11,6 @@ import { Fonts } from '@/constants/theme';
 import ScreenWrapper from '@/components/ScreenWrapper';
 
 export default function TabTwoScreen() {
-  const insets = useSafeAreaInsets();
-  const bottomPadding = Platform.OS === 'ios'
-    ? insets.bottom + 49 + 16
-    : (Platform.OS === 'android' ? insets.bottom + 60 + 16 : 40);
 
   return (
     <ScreenWrapper
@@ -105,7 +100,7 @@ export default function TabTwoScreen() {
             ),
           })}
         </Collapsible>
-        <View style={{ paddingBottom: bottomPadding }}>
+        <View>
           {Array.from({ length: 20 }).map((_, index) => (
             <View key={index} style={styles.card}>
               <Text style={styles.title}>Item {index + 1}</Text>

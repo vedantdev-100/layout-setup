@@ -5,10 +5,14 @@ import {
     StyleSheet,
     Pressable,
     Platform,
+    ScrollView,
+    StyleProp,
+    ViewStyle,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useBottomTabPadding } from "@/hooks/use-bottom-tab-padding";
 
 type Props = {
     title?: string;
@@ -17,6 +21,8 @@ type Props = {
     showBack?: boolean;
     showHeader?: boolean;
     screenBgColor?: string;
+    scrollable?: boolean;
+    contentContainerStyle?: StyleProp<ViewStyle>;
 };
 
 export default function ScreenWrapper({
@@ -26,9 +32,12 @@ export default function ScreenWrapper({
     showBack = false,
     showHeader = true,
     screenBgColor = "#121212",
+    scrollable = false,
+    contentContainerStyle,
 }: Props) {
     const insets = useSafeAreaInsets();
     const router = useRouter();
+    const bottomPadding = useBottomTabPadding();
 
     return (
         <View style={[styles.container, { backgroundColor: screenBgColor }]}>
@@ -65,9 +74,19 @@ export default function ScreenWrapper({
                 </View>
             )}
 
-            <View style={styles.content}>
-                {children}
-            </View>
+            {scrollable ? (
+                <ScrollView
+                    style={styles.content}
+                    contentContainerStyle={[contentContainerStyle, { paddingBottom: bottomPadding }]}
+                    showsVerticalScrollIndicator={false}
+                >
+                    {children}
+                </ScrollView>
+            ) : (
+                <View style={styles.content}>
+                    {children}
+                </View>
+            )}
         </View>
     );
 }

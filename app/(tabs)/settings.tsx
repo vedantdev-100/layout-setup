@@ -1,34 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { BlurView } from 'expo-blur';
-import { ScrollView, StyleSheet, Text, View, Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View } from 'react-native';
 import ScreenWrapper from '@/components/ScreenWrapper';
 
 export default function Settings() {
-    const insets = useSafeAreaInsets();
-    const bottomPadding = Platform.OS === 'ios'
-      ? insets.bottom + 49 + 16
-      : (Platform.OS === 'android' ? insets.bottom + 60 + 16 : 40);
-
     return (
-        <ScreenWrapper title='Settings'>
-            <View style={styles.container} >
-                <StatusBar
-                    translucent
-                    backgroundColor="transparent"
-                    style="light"
-                />
-                <ScrollView
-                    contentContainerStyle={[styles.content, { paddingBottom: bottomPadding }]}
-                    showsVerticalScrollIndicator={false}
-                >
-                    {Array.from({ length: 30 }).map((_, index) => (
-                        <View key={index} style={styles.card}>
-                            <Text style={styles.title}>Item {index + 1}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
-            </View>
+        <ScreenWrapper 
+            title='Settings'
+            scrollable
+            contentContainerStyle={styles.content}
+        >
+            <StatusBar
+                translucent
+                backgroundColor="transparent"
+                style="light"
+            />
+            {Array.from({ length: 30 }).map((_, index) => (
+                <View key={index} style={styles.card}>
+                    <Text style={styles.title}>Item {index + 1}</Text>
+                </View>
+            ))}
         </ScreenWrapper>
     );
 }

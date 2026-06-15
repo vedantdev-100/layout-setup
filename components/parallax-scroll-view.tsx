@@ -10,6 +10,7 @@ import Animated, {
 import { ThemedView } from '@/components/themed-view';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { useBottomTabPadding } from '@/hooks/use-bottom-tab-padding';
 
 const HEADER_HEIGHT = 250;
 
@@ -27,6 +28,7 @@ export default function ParallaxScrollView({
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollOffset(scrollRef);
+  const bottomPadding = useBottomTabPadding();
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -57,7 +59,7 @@ export default function ParallaxScrollView({
         ]}>
         {headerImage}
       </Animated.View>
-      <ThemedView style={styles.content}>{children}</ThemedView>
+      <ThemedView style={[styles.content, { paddingBottom: bottomPadding }]}>{children}</ThemedView>
     </Animated.ScrollView>
   );
 }
