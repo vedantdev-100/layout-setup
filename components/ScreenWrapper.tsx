@@ -185,6 +185,9 @@ export default function ScreenWrapper({
             <View style={styles.content}>
                 {children}
             </View>
+            <View style={styles.footer}>
+
+            </View>
         </View>
     );
 }
@@ -201,8 +204,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         paddingHorizontal: 16,
         paddingBottom: 12,
-        // backgroundColor: "#121212",
-        backgroundColor: "#1a790dff",
+        backgroundColor: "#121212",
+        // backgroundColor: "#1a790dff",
     },
 
     title: {
@@ -225,4 +228,8 @@ const styles = StyleSheet.create({
     content: {
         flex: 1,
     },
+    footer: {
+        backgroundColor: "#161616ff",
+        height: 50
+    }
 });
