@@ -3,7 +3,6 @@ import { NativeTabs, Icon, Label } from "expo-router/unstable-native-tabs";
 
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
-import { BlurView } from "expo-blur";
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();

@@ -5,7 +5,7 @@ import 'react-native-reanimated';
 
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurView } from 'expo-blur';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -15,6 +15,9 @@ export const unstable_settings = {
 
 function StatusOverlays() {
   const insets = useSafeAreaInsets();
+  if (Platform.OS === 'ios') {
+    return null;
+  }
   return (
     <>
       {/* Top Blur only */}
