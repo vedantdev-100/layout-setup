@@ -43,6 +43,13 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "expo-navigation-bar",
+        {
+          "position": "absolute",
+          "enforceContrast": false
+        }
       ]
     ],
     "experiments": {
