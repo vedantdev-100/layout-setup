@@ -11,6 +11,7 @@ export default function HomeScreen() {
     <ScreenWrapper
       title="Home"
       showBack
+      backgroundColor="#0f172a"
     >
       <View style={styles.container} >
         <ScrollView
