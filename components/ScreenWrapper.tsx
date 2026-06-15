@@ -28,6 +28,10 @@ export default function ScreenWrapper({
     const insets = useSafeAreaInsets();
     const router = useRouter();
 
+    const isNativeTabs = Platform.OS === 'ios' || Platform.OS === 'android';
+    const tabHeight = Platform.OS === 'ios' ? 49 : 60;
+    const bottomPadding = isNativeTabs ? insets.bottom + tabHeight : 0;
+
     return (
         <View style={styles.container}>
             {showHeader && (
@@ -63,12 +67,8 @@ export default function ScreenWrapper({
                 </View>
             )}
 
-            {/* <View style={[styles.content, { paddingBottom: insets.bottom + 56 }]}> */}
-            <View style={styles.content}>
+            <View style={[styles.content, { paddingBottom: bottomPadding }]}>
                 {children}
-            </View>
-            <View style={styles.footer}>
-
             </View>
         </View>
     );
@@ -109,9 +109,5 @@ const styles = StyleSheet.create({
 
     content: {
         flex: 1,
-    },
-    footer: {
-        backgroundColor: "#161616ff",
-        height: 50
     }
 });
